@@ -8,6 +8,8 @@
 > I bumped into [FlyTech's Video](https://youtu.be/3DCEeASKNDk) and at the end of the video he challenged the viewers to make a program to generate the keys, so I tried, and this is the result.
 
 ---
+## API Docs
+
 ## Generate Keys
 
 OEM Key: `curl https://windows95keygen.vercel.app/api/oem`
