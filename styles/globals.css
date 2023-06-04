@@ -1,7 +1,6 @@
 @font-face {
-    font-family: 'Windows95';
-    src: url('font/windows95.woff2') format('woff2'),
-        url('font/windows95.woff') format('woff');
+    font-family: "Windows95";
+    src: url("font/windows95.woff2") format("woff2"), url("font/windows95.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -16,9 +15,15 @@
 html,
 body {
     background-color: #008081;
+    overflow: hidden; /* HugTomate */
+}
+
+span {
+    overflow: hidden;
 }
 
 .no-select {
+    user-select: none;
     -webkit-touch-callout: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -44,6 +49,16 @@ body {
     gap: 0.5em;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 5em auto;
+    padding: 2px;
+}
+
+.moveable {
+    position: absolute;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -53,16 +68,177 @@ body {
     border-right: 2px solid #393939;
     border-bottom: 2px solid #393939;
     border-radius: 0;
-    background-color: #C0C0C0;
+    background-color: #c0c0c0;
     font-size: 0.65em;
     gap: 0.5em;
     padding: 3px 3px 5px 3px;
+}
+
+.outer-help-card {
+    display: flex;
+    flex-direction: column;
+    width: 45em;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    background-color: #c0c0c0;
+    font-size: 0.65em;
+    /* gap: 0.2em; */
+    padding: 3px 3px 3px 3px;
+}
+
+.inner-help-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-radius: 0;
+    background-color: #ffffe2;
+    font-size: 1.1em;
+    gap: 0.15em;
+    padding: 5px 3px 5px 18px;
+}
+
+.help-button-bar {
+    margin-top: 0.3em;
+    border-right: 2px solid white;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-radius: 0;
+    background-color: #c0c0c0;
+}
+
+.disabled-help-button {
+    color: #959595;
+    background-color: #c0c0c0;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 1.5px solid #393939;
+    border-bottom: 1.5px solid #393939;
+    border-radius: 0;
+    font-size: 0.65rem;
+    outline: none;
+    height: 24px;
+    width: 65px;
+    text-align: center;
+    display: table-cell;
+    float: left;
+    line-height: 0px;
+    outline: 1.5px solid black;
+}
+
+.help-button {
+    color: black;
+    background-color: #c0c0c0;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 1.5px solid #393939;
+    border-bottom: 1.5px solid #393939;
+    border-radius: 0;
+    font-size: 0.65rem;
+    outline: none;
+    height: 24px;
+    width: 65px;
+    text-align: center;
+    display: table-cell;
+    float: left;
+    line-height: 0px;
+    cursor: pointer;
+    outline: 1.5px solid black;
+}
+
+.help-button:active {
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-top: 2px solid #393939;
+    border-left: 2px solid #393939;
+}
+
+.help-button:active .btn-text {
+    border: dotted 2px black;
+    padding: 0px 2px 0px 2px;
+}
+
+.help-btns {
+    display: flex;
+    gap: 1px;
+}
+
+.help-headline {
+    font-weight: bold;
+    padding: 4px 0px 1px 0px;
+}
+
+.help-firstletter-triangle {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.25em;
+    position: relative;
+    top: -0.095em;
+}
+
+.help-firstletter-square {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    position: relative;
+    top: -0.12em;
+    left: -0.12em;
+}
+
+.help-firstline {
+    font-weight: normal;
+    font-size: 0.85em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.help-text {
+    font-size: 0.85em;
+    padding: 0px 0px 2px 10.6px;
 }
 
 .card-title {
     color: white;
     background-color: #000181;
     padding: 2px 0px 2px 5px;
+    vertical-align: middle;
+    cursor: move;
+}
+
+.custom-btn {
+    color: black;
+    background-color: #c0c0c0;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #393939;
+    border-bottom: 2px solid #393939;
+    border-radius: 0;
+    font-size: 0.65rem;
+    outline: none;
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    display: table-cell;
+    float: right;
+    line-height: 0px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.custom-btns {
+    display: flex;
+    gap: 0.5em;
+}
+
+.custom-btn:active {
+    border-right: 2px solid #c0c0c0;
+    border-bottom: 2px solid #c0c0c0;
+    border-top: 2px solid #393939;
+    border-left: 2px solid #393939;
 }
 
 .key-input {
@@ -75,7 +251,7 @@ body {
     padding: 2px;
 }
 
-.key-input:focus{
+.key-input:focus {
     outline: none;
 }
 
@@ -85,7 +261,7 @@ body {
 }
 
 .btn {
-    background-color: #C0C0C0;
+    background-color: #c0c0c0;
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid #393939;
@@ -96,11 +272,12 @@ body {
     padding: 2px 10px 2px 10px;
     height: 30px;
     width: 5rem;
+    cursor: pointer;
 }
 
 .btn:active {
-    border-right: 2px solid #C0C0C0;
-    border-bottom: 2px solid #C0C0C0;
+    border-right: 2px solid #c0c0c0;
+    border-bottom: 2px solid #c0c0c0;
     border-top: 2px solid #393939;
     border-left: 2px solid #393939;
 }
@@ -108,4 +285,8 @@ body {
 .btn:active .btn-text {
     border: dotted 2px black;
     padding: 0px 2px 0px 2px;
+}
+
+.image {
+    margin-right: 5px;
 }

@@ -1,0 +1,53 @@
+{
+    "config": {
+        "port": 3000,
+        "ip_blocklist": true,
+        "rate_limit_requests": true,
+        "skip_local_ips": true,
+        "whitelist_keys": []
+    },
+    "log": {
+        "enabled": true,
+        "ips": true,
+        "requests": true,
+        "log_path": "./logs/",
+        "log_extention": ".log"
+    },
+    "limits": {
+        "keys": {
+            "10": 5,
+            "11": 5,
+            "oem": 5
+        },
+        "requests": {
+            "requests": 50,
+            "specified_time": 120,
+            "block_duration": 300
+        }
+    },
+    "blocked-ips": [],
+    "pun-arr": [
+        "Bill Gates",
+        "You",
+        "Me",
+        "joe",
+        "Everybody.",
+        "Your Mom",
+        "Chuck Norris",
+        "The monster under your bed",
+        "Tasmanian devils and koalas",
+        "Rick Astley",
+        "Caffeine refusers",
+        "Technophobes who want to make an exception",
+        "Axel Voss",
+        "People who code in English",
+        "People who believe that \"Linux\" is a lifestyle",
+        "People who call \"Inkscape\" a tattoo",
+        "People who like to work Excel-lent",
+        "People who drink a cup of java in the morning",
+        "People who program pythons at the zoo",
+        "People who are obsessed with JavaScript",
+        "People who program in HTML, just like me!",
+        "My chemistry teacher ♥"
+    ]
+}
