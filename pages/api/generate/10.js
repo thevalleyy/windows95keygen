@@ -1,10 +1,10 @@
 import generator from "../../../js/generators";
-import blocked from "../../../js/request";
+import requestBlock from "../../../js/request";
 import config from "../../../config.json";
 const amountLimit = config.limits.keys["10"];
 
 export default async (req, res) => {
-    if (await blocked(req, res)) return;
+    if (await requestBlock(req, res)) return;
     var amount = Number.parseInt(req.query.amount);
     if (!amount || amount < 1) amount = 1;
 

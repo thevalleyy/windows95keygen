@@ -1,8 +1,8 @@
 import checkers from "../../js/checkers";
-import blocked from "../../js/request";
+import requestBlock from "../../js/request";
 
 export default async (req, res) => {
-    if (await blocked(req, res)) return;
+    if (await requestBlock(req, res)) return;
     try {
         const { key } = req.query;
 
