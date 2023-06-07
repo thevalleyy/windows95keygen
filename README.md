@@ -7,7 +7,7 @@
 ![Version](https://img.shields.io/github/package-json/v/thevalleyy/windows95keygen?style=plastic)
 ![Size](https://img.shields.io/github/languages/code-size/thevalleyy/windows95keygen?style=plastic)
 
-## [GitHub Pages ReadMe (better)](https://thevalleyy.github.io/windows95keygen/)
+## [GitHub Pages ReadMe (better)](https://thevalleyy.github.io/windows95keygen/)  |  [Back to the repo](https://github.com/thevalleyy/windows95keygen)
 
 ### Why?
 I happened to find this repo on GitHub and immediately had so many ideas on how to improve it. 
