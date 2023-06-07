@@ -54,6 +54,7 @@ Validate: `curl` [`https://win95.thevalleyy.tk/api/validate?key=KEY`](https://wi
 ---
 ## API documentation
 #### All endpoints:
+
 |Endpoint|Description|Affected by ratelimit|
 |--------|-----------|:---------------------:|
 |[`/api/generate/10`](https://win95.thevalleyy.tk/api/generate/10)|Generates a 10-digit key|✅|
@@ -62,6 +63,7 @@ Validate: `curl` [`https://win95.thevalleyy.tk/api/validate?key=KEY`](https://wi
 |[`/api/validate/`](https://win95.thevalleyy.tk/api/validate?key=KEY)|Validates the above keys|✅|
 
 #### Query parameters:
+
 |Example parameter|Description|Endpoints|Default limits|
 |-----------------|-----------|---------|-------------------|
 |`?amount=3`|Generates the specified number of keys. Must be a non-negative integer.|[`/api/generate/10`](https://win95.thevalleyy.tk/api/generate/10?amount=3), [`/api/generate/11`](https://win95.thevalleyy.tk/api/generate/11?amount=3), [`/api/generate/oem`](https://win95.thevalleyy.tk/api/generate/oem?amount=3)|Max. number of keys: 5 keys at a time|
@@ -70,6 +72,7 @@ Validate: `curl` [`https://win95.thevalleyy.tk/api/validate?key=KEY`](https://wi
 
 #### Responses
 Generally speaking, if something goes wrong **on the server side**, the API will return a 4xx code. If the validation fails, this will result in a `200 OK` code, as everything went successfully, even though the key may be faulty.
+
 |Call|Response|Status|Explanation if needed|
 |----|--------|------|----------------------|
 |`curl` [`https://win95.thevalleyy.tk/api/generate/11?amount=2`](https://win95.thevalleyy.tk/api/generate/11?amount=2)|`{"keys":["6490-9991563","3080-0374734"],"amount":2}`|[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)|-|
@@ -88,6 +91,7 @@ All the endpoints are also accessible via the [GUI](https://win95.thevalleyy.tk/
 
 ---
 ## Configuration
+
 |Path (json)|Description|Default|Data type|
 |-----------|-----------|-------|---------|
 |`.config.port`|Port of the web server|`3000`|Number|
@@ -140,6 +144,7 @@ All the endpoints are also accessible via the [GUI](https://win95.thevalleyy.tk/
 The log directory and file extension can be configured in `config.json` (`.log.log_path` and `.log.log_extension`). Each log file contains 24 hours of information and is named with the corresponding date in ISO format. E.g. `2023-06-06.log`
 
 Each log entry has the same structure:
+
 |Key|Value(s)|Description|Example|
 |---|-----|-----------|-------|
 |`type`|`"blocked"` or `"allowed"`|Whether the request was blocked or not| `"blocked"`|
