@@ -3,7 +3,7 @@
 ![Screenshot](https://i.imgur.com/skt7k4g.png)
 
 [![Website](https://img.shields.io/website?down_color=red&down_message=Down&label=win95.thevalleyy.tk&style=plastic&up_message=Up%21&url=https%3A%2F%2Fwin95.thevalleyy.tk)](https://win95.thevalleyy.tk)
-[![Last Comit](https://img.shields.io/github/last-commit/thevalleyy/windows95keygen/master?style=plastic)](https://github.com/thevalleyy/windows95keygen/commits/master)
+[![Last Commit](https://img.shields.io/github/last-commit/thevalleyy/windows95keygen/master?style=plastic)](https://github.com/thevalleyy/windows95keygen/commits/master)
 [![Version](https://img.shields.io/github/package-json/v/thevalleyy/windows95keygen?style=plastic)](https://github.com/thevalleyy/windows95keygen/blob/master/package.json#L3)
 [![Size](https://img.shields.io/github/languages/code-size/thevalleyy/windows95keygen?style=plastic)](https://www.youtube.com/watch?v=DgJS2tQPGKQ)
 
@@ -42,12 +42,12 @@ To generate more than one key at a time, add `amount` as a query parameter:
 ---
 #### Validate keys
 
-Validate: `https://win95.thevalleyy.tk/api/validate` 
+Validate: 
 
-```json
-{ 
-  "key": "KEY" 
-}
+```sh
+curl X POST https://win95.thevalleyy.tk/api/validate 
+-H "Content-Type: application/json" 
+-d "{\"key\": \"KEY\"}"
 ```
 or
 
@@ -62,15 +62,15 @@ Validate: `curl` [`https://win95.thevalleyy.tk/api/validate?key=KEY`](https://wi
 |[`/api/generate/10`](https://win95.thevalleyy.tk/api/generate/10)|Generates a 10-digit key|✅|
 |[`/api/generate/11`](https://win95.thevalleyy.tk/api/generate/11)|Generates an 11-digit key|✅|
 |[`/api/generate/oem`](https://win95.thevalleyy.tk/api/generate/oem)|Generates an OEM key|✅|
-|[`/api/validate/`](https://win95.thevalleyy.tk/api/validate?key=KEY)|Validates the above keys|✅|
+|[`/api/validate`](https://win95.thevalleyy.tk/api/validate?key=KEY)|Validates the above keys|✅|
 
 #### Query parameters:
 
 |Example parameter|Description|Endpoints|Default limits|
 |-----------------|-----------|---------|-------------------|
 |`?amount=3`|Generates the specified number of keys. Must be a non-negative integer.|[`/api/generate/10`](https://win95.thevalleyy.tk/api/generate/10?amount=3), [`/api/generate/11`](https://win95.thevalleyy.tk/api/generate/11?amount=3), [`/api/generate/oem`](https://win95.thevalleyy.tk/api/generate/oem?amount=3)|Max. number of keys: 5 keys at a time|
-|`?key=123-456789`|Validates the given key. Can be a 10-digit, 11-digit, or OEM key.|[`/api/validate/`](https://win95.thevalleyy.tk/api/validate?key=123-456789)|-|
-|`?whitelistKey=password`|Whitelists the request (no rate limit). ⚠ If the IP address is blacklisted, the request will be blocked with the highest priority!|Can be used on any endpoint|No whitelisted strings set|
+|`?key=123-456789`|Validates the given key. Can be a 10-digit, 11-digit, or OEM key.|[`/api/validate`](https://win95.thevalleyy.tk/api/validate?key=123-456789)|-|
+|`?whitelistKey=password`|Whitelists the request (no rate limit). <br> ⚠ If the IP address is blacklisted, the request will be blocked with the highest priority!|Can be used on any endpoint|No whitelisted strings set|
 
 #### Responses
 Generally speaking, if something goes wrong **on the server side**, the API will return a 4xx code. If the validation fails, this will result in a `200 OK` code, as everything went successfully, even though the key may be faulty.
@@ -82,9 +82,9 @@ Generally speaking, if something goes wrong **on the server side**, the API will
 |`curl` [`https://win95.thevalleyy.tk/api/generate/11`](https://win95.thevalleyy.tk/api/generate/11)|`"blocked"`|[403 Forbidden](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403)|The requesting IP address has been blacklisted|
 |`curl` [`https://win95.thevalleyy.tk/api/generate/11`](https://win95.thevalleyy.tk/api/generate/11)|`"Too Many Requests. Timeout will be: 300 seconds"`|[429 Too Many Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429)|The requesting IP address has been rate-limited|
 |`curl` [`https://win95.thevalleyy.tk/api/validate?key=000-0000007`](https://win95.thevalleyy.tk/api/validate?key=000-0000007)|`{"message":"Valid 10-Digit Key"}}`|[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)|-|
-|`curl` [`https://win95.thevalleyy.tk/api/validate?key=000-0000000`](https://win95.thevalleyy.tk/api/validate?key=000-0000000)|`{"message":{"check":"Invalid 10-digit key","details":"Second segment last digit control failed"}}`|[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)|Bad key. `details` gives the reason. ⚠ Although the key is bad, the response code will be 200 OK|
+|`curl` [`https://win95.thevalleyy.tk/api/validate?key=000-0000000`](https://win95.thevalleyy.tk/api/validate?key=000-0000000)|`{"message":{"check":"Invalid 10-digit key","details":"Second segment last digit control failed"}}`|[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)|Bad key. `details` gives the reason. <br> ⚠ Although the key is bad, the response code will be `200 OK`|
 |`curl` [`https://win95.thevalleyy.tk/api/validate?key=hjfdsjk+`](https://win95.thevalleyy.tk/api/validate?key=hjfdsjk+)|`{"message":"Unknown Key"}}`|[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)|The type of the given key is unknown|
-|`curl` [`https://win95.thevalleyy.tk/api/validate`](https://win95.thevalleyy.tk/api/validate)|`{"error":"Please specify a key using "/validate?key=KEY""}`|[400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)|No key was given as a query parameter|
+|`curl` [`https://win95.thevalleyy.tk/api/validate`](https://win95.thevalleyy.tk/api/validate)|`{"error":"Please specify a key via the \"key\" query parameter or POST body."}`|[400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)|No key was given as a query parameter or as a POST json body|
 
 #### Rate limit
 The default configuration blocks requests from a specific IP **for 300 seconds** (5 mins), if this IP sends more than **50 requests** in **120 seconds** (2 mins). 
@@ -116,30 +116,30 @@ All the endpoints are also accessible via the [GUI](https://win95.thevalleyy.tk/
 |`.pun-arr`|Funny jokes|See below|Array > Strings|
 
 ```json
-    [
-        "Bill Gates",
-        "You",
-        "Me",
-        "joe",
-        "Everybody.",
-        "Your Mom",
-        "Chuck Norris",
-        "The monster under your bed",
-        "Tasmanian devils and koalas",
-        "Rick Astley",
-        "Caffeine refusers",
-        "Technophobes who want to make an exception",
-        "Axel Voss",
-        "People who code in English",
-        "People who believe that \"Linux\" is a lifestyle",
-        "People who call \"Inkscape\" a tattoo",
-        "People who like to work Excel-lent",
-        "People who drink a cup of java in the morning",
-        "People who program pythons at the zoo",
-        "People who are obsessed with JavaScript",
-        "People who code in HTML, just like me!",
-        "My chemistry teacher ♥"
-    ]
+[
+    "Bill Gates",
+    "You",
+    "Me",
+    "joe",
+    "Everybody.",
+    "Your Mom",
+    "Chuck Norris",
+    "The monster under your bed",
+    "Tasmanian devils and koalas",
+    "Rick Astley",
+    "Caffeine refusers",
+    "Technophobes who want to make an exception",
+    "Axel Voss",
+    "People who code in English",
+    "People who believe that \"Linux\" is a lifestyle",
+    "People who call \"Inkscape\" a tattoo",
+    "People who like to work Excel-lent",
+    "People who drink a cup of java in the morning",
+    "People who program pythons at the zoo",
+    "People who are obsessed with JavaScript",
+    "People who code in HTML, just like me!",
+    "My chemistry teacher ♥"
+]
 ```
 ---
 ## Logs
@@ -150,8 +150,8 @@ Each log entry has the same structure:
 |Key|Value(s)|Description|Example|
 |---|-----|-----------|-------|
 |`type`|`"blocked"` or `"allowed"`|Whether the request was blocked or not| `"blocked"`|
-|`reason`|`"bl"`, `"rl"` or `"wl"`, `"local"`, `"nfc"`, `"nrl"`|Reason for blocking or allowing the request. `"bl"`: blacklisted, `"rl"`: rate-limited, `"wl"`: whitelisted, `"local"`: local IP (configured in `config.json`), `"nfc"`: no further checks; rate limiting is disabled and IP is not blocked, `"nrl"`: not rate-limited|`"rl"`|
-|`time`|A unixtime stamp|Exact time of the request|`1685996280444`|
+|`reason`|<ul><li>`"bl"`</li><li>`"rl"`</li></ul><ul><li>`"wl"`</li><li>`"local"`</li><li>`"nfc"`</li><li>`"nrl"`</li></ul>|Reason for blocking or allowing the request: <br><ul><li>`"bl"`: blacklisted</li><li>`"rl"`: rate-limited</li><li>`"wl"`: whitelisted</li><li>`"local"`: local IP (configured in `config.json`)</li><li>`"nfc"`: no further checks; rate limiting is disabled and IP is not blocked</li><li>`"nrl"`: not rate-limited|`"rl"`</li></ul>|
+|`time`|A unix timestamp|Exact time of the request|`1685996280444`|
 |`ip`|IPv4 address or IPv6 address|IP address of the request, if not disabled in `config.json`|`"85.9.18.42"` (don't even try, it's not real)|
 |`url`|URL|URL of the request, if not disabled in `config.json`|`"/api/generate/oem"`|
 
@@ -163,12 +163,7 @@ To summarise, the log line explained above would look like this:
 
 ------------
 
-## Tested on
-
-- Microsoft Windows NT 4.0 Server (4.00.1381.1)
-- Microsoft Windows NT 4.0 Workstation (4.00.1381.1) [OEM]
-- Microsoft Windows 95C (4.03.1216.OSR2.5) [OEM]
-
+![Keys tested on](https://i.imgur.com/HJNxR2k.png)
 
 ## Inspiration/Credits
 
