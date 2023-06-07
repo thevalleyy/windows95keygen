@@ -2,10 +2,10 @@
 
 ![Screenshot](https://i.imgur.com/skt7k4g.png)
 
-![Website](https://img.shields.io/website?down_color=red&down_message=Down&label=win95.thevalleyy.tk&style=plastic&up_message=Up%21&url=https%3A%2F%2Fwin95.thevalleyy.tk)
-![Last Comit](https://img.shields.io/github/last-commit/thevalleyy/windows95keygen/master?style=plastic)
-![Version](https://img.shields.io/github/package-json/v/thevalleyy/windows95keygen?style=plastic)
-![Size](https://img.shields.io/github/languages/code-size/thevalleyy/windows95keygen?style=plastic)
+[![Website](https://img.shields.io/website?down_color=red&down_message=Down&label=win95.thevalleyy.tk&style=plastic&up_message=Up%21&url=https%3A%2F%2Fwin95.thevalleyy.tk)](https://win95.thevalleyy.tk)
+[![Last Comit](https://img.shields.io/github/last-commit/thevalleyy/windows95keygen/master?style=plastic)](https://github.com/thevalleyy/windows95keygen/commits/master)
+[![Version](https://img.shields.io/github/package-json/v/thevalleyy/windows95keygen?style=plastic)](https://github.com/thevalleyy/windows95keygen/blob/master/package.json#L3)
+[![Size](https://img.shields.io/github/languages/code-size/thevalleyy/windows95keygen?style=plastic)](https://www.youtube.com/watch?v=DgJS2tQPGKQ)
 
 ## [GitHub Pages ReadMe (better)](https://thevalleyy.github.io/windows95keygen/)  |  [Back to the repo](https://github.com/thevalleyy/windows95keygen)
 
