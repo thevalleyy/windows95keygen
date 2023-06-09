@@ -113,8 +113,20 @@ All the endpoints are also accessible via the [GUI](https://win95.thevalleyy.tk/
 |`.limits.requests.specified_time`|Time in seconds to allow a specified (one line above) number of requests in|`120`|Number|
 |`.limits.requests.block_duration`|Time in seconds to block an IP address that has exceeded the limit for|`300`|Number|
 |`.blocked-ips`|Array of strings representing blocked IP addresses. IPs in thit list will be blocked 100% of the time|`[]`|Array > Strings|
+|`.html-meta-data.title`|HTML meta title|`"Windows NT 4.0 and Windows 95 Key Generator"`|String|
+|`.html-meta-data.description`|HTML meta description|`"This Windows 95 styled website allows you to create Windows NT 4.0, Windows 95, Windows 98 and Office 7.0 keys. It supports different forms such as 10-digit, 11-digit, or OEM format. There's also a public API available!"`|String|
+|`.html-meta-data.url`|HTML meta url, must contain the protocol. `.html-meta-data.title` must be set to use a URL|`"https://win95.thevalleyy.tk/"`|String|
+|`.html-meta-data.image`|HTML meta image, must contain the protocol|`"https://i.imgur.com/skt7k4g.png"`|String|
+|`.html-meta-data.large_image`|Should the image be large or small?|`true`|Boolean|
+|`.html-meta-data.color`|HTML meta color, has to be a hex value|`"#000181"`|String|
+|`.oEmbed-meta-data.author_name`|oEmbed author name|`"Free and open source on GitHub"`|String|
+|`.oEmbed-meta-data.author_url`|oEmbed author URL, must contain the protocol. `.oEmbed-meta-data.author_name` must be set to use an URL|`"https://github.com/thevalleyy/windows95keygen"`|String|
+|`.oEmbed-meta-data.provider_name`|oEmbed provider name|`"windows95keygen by thevalleyy"`|String|
+|`.oEmbed-meta-data.provider_url`|oEmbed provider URL, must contain the protocol|`"https://github.com/thevalleyy"`|String|
+|`.url`|URL of your web page. Must be <ul><li>`protocol`</li><li>`subdomain`, if available</li><li>`domain`</li><li>`domain extension`</li><li>`path`, if available</li><li>`port`, if available</li></ul> `.oEmbed-meta-data.provider_name` must be set to use an URL. If you don't know what this is, visit your web page, open dev tools (Ctrl + Shift + i), and run `window.location.origin` in the console. <br> ⚠ oEmbed meta data will only work if the value in `.url` is correct. If you leave it at default, the oEmbed meta data won't change|`"https://win95.thevalleyy.tk/"`|String|
 |`.pun-arr`|Funny jokes|See below|Array > Strings|
 
+#### pun-arr
 ```json
 [
     "Bill Gates",
@@ -141,6 +153,34 @@ All the endpoints are also accessible via the [GUI](https://win95.thevalleyy.tk/
     "My chemistry teacher ♥"
 ]
 ```
+---
+#### HTML meta content & oEmbed data
+`.html-meta-data`: 
+
+![Discord Embed](https://i.imgur.com/MpA0m3x.png)
+
+Difference between `.html-meta-data.large_image = true` and `.html-meta-data.large_image = false`:
+
+<table><tr><td valign="top"><img src="https://i.imgur.com/QotJGQ4.png" /> </td><td valign="top"><img src="https://i.imgur.com/CQqVHzY.png" /> </td></tr></table>
+
+`oEmbed-meta-data`:
+
+![Discord Embed2](https://i.imgur.com/2TnhIQ8.png)
+
+If you are familiar with the [`EmbedBuilder`](https://discord.js.org/#/docs/discord.js/main/class/EmbedBuilder) constructor in [`discord.js`](https://discord.js.org/#/), here are the corresponding functions:
+|HTML or oEmbed|discord.js|
+|----|----------|
+|`.html-meta-data.title`|`.setTitle()`|
+|`.html-meta-data.description`|`.setDescription()`|
+|`.html-meta-data.url`|`.setURL()`|
+|`.html-meta-data.image` && `.html-meta-data.large_image = true`|`.setImage()`|
+|`.html-meta-data.image` && `.html-meta-data.large_image = false`|`.setThumbnail()`|
+|`.html-meta-data.color`|`.setColor()`|
+|`.oEmbed-meta-data.author_name`|`.setAuthor({ name: "" })`|
+|`.oEmbed-meta-data.author_url`|`.setAuthor({ name: "", url: "" })`|
+|`.oEmbed-meta-data.provider_name`|`n/a`|
+|`.oEmbed-meta-data.provider_url`|`n/a`|
+
 ---
 ## Logs
 The log directory and file extension can be configured in `config.json` (`.log.log_path` and `.log.log_extension`). Each log file contains 24 hours of information and is named with the corresponding date in ISO format. E.g. `2023-06-06.log`
