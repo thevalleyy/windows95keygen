@@ -223,7 +223,7 @@ To summarise, the log line explained above would look like this:
 
 ⚠ These json objects are stored directly below each other without any trailing commas. This means that to convert the log file to json, you need to add commas after each line.
 
----
+or
 
 ![Keys tested on](https://i.imgur.com/HJNxR2k.png)
 
