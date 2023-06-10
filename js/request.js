@@ -2,6 +2,7 @@ const { RateLimiterMemory } = require("rate-limiter-flexible");
 const config = require("../config.json");
 const fs = require("node:fs");
 const blocklist = config["blocked-ips"];
+const localIpv4Regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/; // local ip regex
 
 const rateLimiter = new RateLimiterMemory({
     points: config.limits.requests.requests, // how many requests per
@@ -16,16 +17,15 @@ async function blocked(req, res, ip) {
     // check manually blocked ips (prio 1)
     if (config.config.ip_blocklist && blocklist.includes(ipAddress)) {
         res.status(403).json("blocked"); // sent blocked status and text
-        return [true, "blacklist"];
+        return [true, "bl"]; // = blacklisted
     }
 
     // is there a whitelisted key given?
-    if (req.query.whitelistKey && config.config.whitelist_keys.includes(req.query.whitelistKey)) return [false, "whitelist"];
+    if (req.query.whitelistKey && config.config.whitelist_keys.includes(req.query.whitelistKey)) return [false, "wl"]; // = whitelisted
 
     // skip local ips if enabled
     // this won't work unless the request originates from the same machine as the server
     // even if the request server stands one meter away from the api server
-    const localIpv4Regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/; // local ip regex
     if (config.config.skip_local_ips) {
         if (ipAddress.startsWith("::ffff:")) return [false, "local"]; // ipv4 mapped ipv6
         if (ipAddress === "::1") return [false, "local"]; // ipv6 localhost
@@ -33,14 +33,14 @@ async function blocked(req, res, ip) {
     }
 
     // is the rate limit active? if not, skip rest of the checks
-    if (!config.config.rate_limit_requests) return [false, "no further checks"];
+    if (!config.config.rate_limit_requests) return [false, "nfc"]; // =? no further checks
 
     try {
-        const imaginaryVariableThatHasLiterallyNoUse = await rateLimiter.consume(ipAddress, 1);
-        return [false, "not ratelimited"]; // not blocked
+        await rateLimiter.consume(ipAddress, 1);
+        return [false, "nrl"]; // not rate limited
     } catch (error) {
         res.status(429).json(`Too Many Requests. Timeout will be: ${config.limits.requests.block_duration} seconds`);
-        return [true, "ratelimited"]; // blocked
+        return [true, "rl"]; // rate limited
     }
 }
 
@@ -59,7 +59,7 @@ async function writeLog(type, reason, ip, url, time) {
     };
 
     const dateString = new Date(time).toISOString().substring(0, 10);
-    fs.appendFile(`${config.log.log_path}/${dateString}${config.log.log_extention}`, `\n${JSON.stringify(json)}`, (err) => {
+    fs.appendFile(`${config.log.log_path}/${dateString}${config.log.log_extension}`, `\n${JSON.stringify(json)}`, (err) => {
         if (err) console.warn(err);
     });
 }

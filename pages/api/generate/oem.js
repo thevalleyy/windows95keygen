@@ -10,7 +10,7 @@ export default async (req, res) => {
 
     if (amount > amountLimit) {
         return res.status(400).json({
-            error: `You can create a maximum of ${amountLimit} oem-digit Keys at once`,
+            error: `You can create a maximum of ${amountLimit} oem-digit keys at once`,
             amount: amount,
         });
     }

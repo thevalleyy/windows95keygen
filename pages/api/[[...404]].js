@@ -2,7 +2,7 @@ export default (req, res) => {
     const json = {
         error:
             req.url +
-            " is not a valid request. Please specify a valid method. Example: /api/generate/10. Detailed instructions can be found under https://github.com/thevalleyy/windows95keygen/blob/master/README.md#api-docs.",
+            " is not a valid request. Valid endpoints are listed below. Detailed instructions can be found under https://github.com/thevalleyy/windows95keygen#api-documentation.",
         methods: {
             api: {
                 generate: {
@@ -14,5 +14,5 @@ export default (req, res) => {
             },
         },
     };
-    res.status(400).json(json);
+    res.status(404).json(json);
 };

@@ -7,11 +7,11 @@
         "whitelist_keys": []
     },
     "log": {
-        "enabled": true,
-        "ips": true,
+        "enabled": false,
+        "ips": false,
         "requests": true,
         "log_path": "./logs/",
-        "log_extention": ".log"
+        "log_extension": ".log"
     },
     "limits": {
         "keys": {
@@ -26,6 +26,21 @@
         }
     },
     "blocked-ips": [],
+    "html-meta-data": {
+        "title": "Windows NT 4.0 and Windows 95 Key Generator",
+        "description": "This Windows 95 styled website allows you to create Windows NT 4.0, Windows 95, Windows 98 and Office 7.0 keys. It supports different forms such as 10-digit, 11-digit, or OEM format. There's also a public API available!",
+        "url": "https://win95.thevalleyy.tk/",
+        "image": "https://i.imgur.com/skt7k4g.png",
+        "large_image": true,
+        "color": "#000181"
+    },
+    "oEmbed-meta-data": {
+        "author_name": "Free and open source on GitHub",
+        "author_url": "https://github.com/thevalleyy/windows95keygen",
+        "provider_name": "windows95keygen by thevalleyy",
+        "provider_url": "https://github.com/thevalleyy"
+    },
+    "url": "https://win95.thevalleyy.tk/",
     "pun-arr": [
         "Bill Gates",
         "You",
@@ -47,7 +62,7 @@
         "People who drink a cup of java in the morning",
         "People who program pythons at the zoo",
         "People who are obsessed with JavaScript",
-        "People who program in HTML, just like me!",
+        "People who code in HTML, just like me!",
         "My chemistry teacher ♥"
     ]
 }

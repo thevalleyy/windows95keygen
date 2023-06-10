@@ -10,7 +10,7 @@ export default async (req, res) => {
 
     if (amount > amountLimit) {
         return res.status(400).json({
-            error: `You can create a maximum of ${amountLimit} 10-digit Keys at once`,
+            error: `You can create a maximum of ${amountLimit} 10-digit keys at once`,
             amount: amount,
         });
     }

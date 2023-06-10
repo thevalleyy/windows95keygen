@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
+
 const config = require("../config.json");
 const punArr = config["pun-arr"];
-// import dynamic from "next/dynamic";
+const metaData = config["html-meta-data"];
+const oEmbed = "oembed.json";
 
+// import dynamic from "next/dynamic";
 // const DynamicComponentWithNoSSR = dynamic(() => import("../components/hello3"), { ssr: false });
 
 export default function Home() {
@@ -27,6 +30,12 @@ export default function Home() {
                     setKey("Too many requests! " + `Timeout will be: ${config.limits.requests.block_duration} seconds`);
                     return;
                 }
+                if (error.toString().includes("403")) {
+                    setKey("Blocked!");
+                    return;
+                }
+                setKey("Internal error");
+                return console.warn(error);
             });
     };
 
@@ -53,7 +62,12 @@ export default function Home() {
                     setCheck({ check: "Too many requests!", details: `Timeout will be: ${config.limits.requests.block_duration} seconds` });
                     return;
                 }
+                if (error.toString().includes("403")) {
+                    setCheck({ check: "Blocked!", details: "You are blocked from using this API" });
+                    return;
+                }
                 setCheck("Internal error");
+                return console.warn(error);
             });
     };
 
@@ -70,13 +84,21 @@ export default function Home() {
             if (event.key.toLowerCase() == "g") document.getElementById("generalHelpButton")?.click();
         });
         document.getElementById("replaceThis").innerHTML = punArr[Math.floor(Math.random() * punArr.length)];
+        // document.getElementById("oembed").href = window.location.origin + "/" + oEmbed;
     }, []);
-
     return (
         <>
             <Head>
                 <title>Key Generator</title>
                 <link rel="icon" href="/favicon.ico" />
+                <meta content={metaData.title} property="og:title" />
+                <meta content="website" property="og:type" />
+                <meta content={metaData.description} property="og:description" />
+                <meta content={metaData.url} property="og:url" />
+                <meta content={metaData.image} property="og:image" />
+                <meta content={metaData.color} name="theme-color" />
+                {metaData.large_image ? <meta content="summary_large_image" name="twitter:card" /> : ""}
+                <link type="application/json+oembed" href={`${config.url}/${oEmbed}`} id="oembed" />
             </Head>
             <div className="center fullscreen">
                 {/* <DynamicComponentWithNoSSR /> */}
@@ -276,43 +298,43 @@ export default function Home() {
                                             <span className="help-firstletter-triangle">🞂</span>
                                             <span style={{ fontSize: "0.49em" }}> </span>
 
-                                            <span className="help-firstline">Choose a type of key you want to generate.</span>
+                                            <span className="help-firstline">Select the type of key you wish to generate.</span>
                                         </span>
 
                                         <p className="help-text">
-                                            This can be done in the Key Generator window on the left. If you press the "copy" button, the key will be
-                                            copied to the clipboard.
+                                            This can be done in the Key Generator window on the left. Pressing the 'Copy' button will copy the key to
+                                            the clipboard. copied to the clipboard.
                                         </p>
                                         <p className="help-text">
-                                            There is also the "Key Validator", which will validate keys, as the name suggests.
+                                            There is also a 'Key Validator', which, as the name suggests, will validate the key you have entered.
                                         </p>
 
                                         <b className="help-headline">Tips</b>
                                         <span>
                                             <span className="help-firstletter-square">⯀</span>
-                                            <span className="help-firstline">There exist a few nice features.</span>
+                                            <span className="help-firstline">There are some nice features.</span>
                                         </span>
 
                                         <p className="help-text">
                                             You can press the underlined letters to press their button. To enter a key, press the space bar.
                                         </p>
                                         <p className="help-text">All windows can be dragged around!</p>
-                                        <p className="help-text">Nearly everything here is as interactive as in Windows 95.</p>
+                                        <p className="help-text">Almost everything here is as interactive as in Windows 95.</p>
                                     </>
                                 ) : category == "keys" ? ( // Keys
                                     <>
-                                        <b className="help-headline">To use this keys</b>
+                                        <b className="help-headline">To use these keys</b>
 
                                         <span>
                                             <span className="help-firstletter-triangle">🞂</span>
                                             <span style={{ fontSize: "0.49em" }}> </span>
 
-                                            <span className="help-firstline">There are three types of keys, you can choose.</span>
+                                            <span className="help-firstline">There are three types of keys to choose from.</span>
                                         </span>
 
-                                        <p className="help-text">10-Digit: Used for retail CDs</p>
-                                        <p className="help-text">11-Digit: Used to activate Office 97</p>
-                                        <p className="help-text">OEM: Original equipment manufacturer versions</p>
+                                        <p className="help-text">10-digit: Used for retail CDs</p>
+                                        <p className="help-text">11-digit: Used to activate Office 97</p>
+                                        <p className="help-text">OEM: Original Equipment Manufacturer versions</p>
 
                                         <b className="help-headline">Tip</b>
                                         <span>
@@ -320,12 +342,12 @@ export default function Home() {
                                             <span className="help-firstline">Windows versions</span>
                                         </span>
 
-                                        <p className="help-text">All these keys can be used to activate the corresponding Windows versions.</p>
-                                        <p className="help-text">10-Digit: Windows NT 4 & Windows 95</p>
-                                        <p className="help-text">11-Digit: Office 97</p>
-                                        <p className="help-text">10-Digit: Windows NT 4 & Windows 95</p>
+                                        <p className="help-text">All of these keys can be used to activate the appropriate versions of Windows.</p>
+                                        <p className="help-text">10-digit: Windows NT 4 & Windows 95</p>
+                                        <p className="help-text">11-digit: Office 97</p>
+                                        <p className="help-text">10-digit: Windows NT 4 & Windows 95</p>
                                         <p className="help-text">
-                                            You can learn more about the keys and the algorithm behind it{" "}
+                                            You can read more about the keys and the algorithm behind them{" "}
                                             <a href="https://gurney.dev/posts/mod7/" target="_blank">
                                                 here
                                             </a>
@@ -342,18 +364,15 @@ export default function Home() {
                                             <span style={{ fontSize: "0.49em" }}> </span>
 
                                             <span className="help-firstline">
-                                                Read the docs at my{" "}
-                                                <a
-                                                    href="https://github.com/thevalleyy/windows95keygen/blob/master/README.md#api-docs"
-                                                    target="_blank"
-                                                >
+                                                Read the documentation on my{" "}
+                                                <a href="https://github.com/thevalleyy/windows95keygen#api-documentation" target="_blank">
                                                     GitHub
                                                 </a>
                                                 .
                                             </span>
                                         </span>
 
-                                        <p className="help-text">You can either generate keys of validate them</p>
+                                        <p className="help-text">You can either generate keys or validate them</p>
                                         <p className="help-text">
                                             To validate a key, send a request to{" "}
                                             <a href="/api/validate" target="_blank">
@@ -363,13 +382,13 @@ export default function Home() {
                                         </p>
 
                                         <p className="help-text">
-                                            If you want to generate a key, send a request to{" "}
+                                            To generate a key, send a request to{" "}
                                             <a href="/api/generate/10" target="_blank">
                                                 /api/generate/10
                                             </a>
                                             . You can also generate keys of the type "OEM" or "11" by replacing the 10 with "oem" or "11". A detailed
-                                            list which describes the different types can be found at this projects readme on{" "}
-                                            <a href="https://github.com/thevalleyy/windows95keygen/blob/master/README.md" target="_blank">
+                                            list describing the different types can be found in this project's readme on{" "}
+                                            <a href="https://github.com/thevalleyy/windows95keygen#readme" target="_blank">
                                                 GitHub
                                             </a>
                                             .
@@ -381,15 +400,15 @@ export default function Home() {
                                             <span className="help-firstline">You can generate multiple keys at once. </span>
                                         </span>
                                         <span className="help-text">
-                                            Just specify an amount as a query parameter. More information on this can be found at my{" "}
-                                            <a href="https://github.com/thevalleyy/windows95keygen/blob/master/README.md" target="_blank">
+                                            Just specify an amount as a query parameter. See my{" "}
+                                            <a href="https://github.com/thevalleyy/windows95keygen/#readme" target="_blank">
                                                 GitHub
-                                            </a>
-                                            .
+                                            </a>{" "}
+                                            for more details.
                                         </span>
                                         <b className="help-text">
                                             {config.config.rate_limit_requests
-                                                ? `There is a rate limit for the api. You can send up to ${config.limits.requests.requests} requests per ${config.limits.requests.specified_time} seconds.`
+                                                ? `There is a rate limit on the API. You can send up to ${config.limits.requests.requests} requests every ${config.limits.requests.specified_time} seconds.`
                                                 : ""}
                                         </b>
                                     </>
