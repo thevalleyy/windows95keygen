@@ -232,6 +232,7 @@ To summarise, the log line explained above would look like this:
 
 ## Inspiration/Credits
 
+-   [Original repository by andreazllin](https://github.com/andreazllin/windows95keygen) - 🌱 Root of the project. Thank you for creating it, and making it open source!
 -   [Blog post by gurney](https://gurney.dev/posts/mod7/) - 📝 Detailed explanation of the algorithm and more.
 -   [@dgurney's article](https://medium.com/@dgurney/so-you-want-to-generate-license-keys-for-old-microsoft-products-a355c8bf5408) - 📰 Article on how it works.
 -   [FlyTech's Video](https://youtu.be/3DCEeASKNDk) - 🎥 Video about this topic.
