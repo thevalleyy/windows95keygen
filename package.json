@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "node dev-server.js",
-        "build": "node build-server.js",
+        "build-files": "node js/buildFiles.js",
+        "dev": "npm run build-files && node dev-server.js",
+        "build": "npm run build-files && node build-server.js",
         "start": "node start-server.js",
-        "postbuild": "next-sitemap",
+        "postbuild": "node -e \"const generate = require('./config.json').generate['sitemap.xml']; if (generate) { require('child_process').execSync('npm run sitemap', { stdio: 'inherit' }); } else { console.log('\\x1b[36m info\\x1b[0m  - skipped sitemap.xml'); }\"",
+        "sitemap": "next-sitemap",
         "chaos-start": "npm i && npm run build && npm run start"
     },
     "dependencies": {

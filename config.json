@@ -41,6 +41,10 @@
         "provider_url": "https://github.com/thevalleyy"
     },
     "url": "https://win95.thevalleyy.tk/",
+    "generate": {
+        "robots.txt": true,
+        "sitemap.xml": true
+    },
     "pun-arr": [
         "Bill Gates",
         "You",

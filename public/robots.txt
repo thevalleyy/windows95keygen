@@ -1,7 +1,0 @@
-User-Argent: *
-Allow: /
-
-User-Agent: *
-Disallow: /api/
-
-Sitemap: https://win95.thevalleyy.tk/sitemap.xml
