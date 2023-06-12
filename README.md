@@ -188,6 +188,7 @@ Difference between `.html-meta-data.large_image = true` and `.html-meta-data.lar
 ![Discord Embed2](https://i.imgur.com/2TnhIQ8.png)
 
 If you are familiar with the [`EmbedBuilder`](https://discord.js.org/#/docs/discord.js/main/class/EmbedBuilder) constructor in [`discord.js`](https://discord.js.org/#/), here are the corresponding functions:
+
 |HTML or oEmbed|discord.js|
 |----|----------|
 |`.html-meta-data.title`|`.setTitle()`|
