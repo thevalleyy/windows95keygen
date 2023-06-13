@@ -8,7 +8,7 @@ export default async (req, res) => {
         if (req.query.key) key = req.query.key; // GET query parameter
         else if (req.body.key) key = req.body.key; // POST json body
 
-        console.log(key, req.query, req.body);
+        // console.log(key, req.query, req.body);
 
         if (!key)
             return res.status(400).json({
