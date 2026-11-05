@@ -71,5 +71,4 @@ export default async (req, res) => {
 /* TODO:
  * Features:
  * Bildschirmgröße zu klein? -> Resizen (mit prozent arbeiten?)
- * *.ml, robots.txt und sitemap.xml ausm repo löschen
  */

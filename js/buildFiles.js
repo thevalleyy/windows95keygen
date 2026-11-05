@@ -1,6 +1,8 @@
-const fs = require("node:fs");
-const OEmbedConfig = require("../config.json")["oEmbed-meta-data"];
-const config = require("../config.json");
+import fs from "node:fs";
+import config from "../config.json" with { type: "json" };
+
+const OEmbedConfig = config["oEmbed-meta-data"];
+
 
 function buildRobots() {
     if (!config.generate["robots.txt"]) return console.log("\x1b[36m info\x1b[0m  - skipped robots.txt");

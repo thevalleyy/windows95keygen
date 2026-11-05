@@ -4,9 +4,6 @@
 /logs
 *.log
 
-# readme
-*.md
-
 # sitemap and robots
 /public/sitemap.xml
 /public/robots.txt

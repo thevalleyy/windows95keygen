@@ -1,6 +1,5 @@
 {
     "config": {
-        "port": 3000,
         "ip_blocklist": true,
         "rate_limit_requests": true,
         "skip_local_ips": true,
@@ -29,7 +28,7 @@
     "html-meta-data": {
         "title": "Windows NT 4.0 and Windows 95 Key Generator",
         "description": "This Windows 95 styled website allows you to create Windows NT 4.0, Windows 95, Windows 98 and Office 7.0 keys. It supports different forms such as 10-digit, 11-digit, or OEM format. There's also a public API available!",
-        "url": "https://win95.thevalleyy.tk/",
+        "url": "https://github.com/thevalleyy/windows95keygen",
         "image": "https://i.imgur.com/skt7k4g.png",
         "large_image": true,
         "color": "#000181"
@@ -40,7 +39,7 @@
         "provider_name": "windows95keygen by thevalleyy",
         "provider_url": "https://github.com/thevalleyy"
     },
-    "url": "https://win95.thevalleyy.tk/",
+    "url": "https://github.com/thevalleyy/windows95keygen",
     "generate": {
         "robots.txt": true,
         "sitemap.xml": true
@@ -56,12 +55,10 @@
         "The monster under your bed",
         "Tasmanian devils and koalas",
         "Rick Astley",
-        "Caffeine refusers",
+        "Caffeine addicts",
         "Technophobes who want to make an exception",
         "Axel Voss",
         "People who code in English",
-        "People who believe that \"Linux\" is a lifestyle",
-        "People who call \"Inkscape\" a tattoo",
         "People who like to work Excel-lent",
         "People who drink a cup of java in the morning",
         "People who program pythons at the zoo",

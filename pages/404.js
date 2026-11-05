@@ -1,5 +1,6 @@
 import Head from "next/head";
-const config = require("../config.json");
+
+import config from "../config.json" with { type: "json" };
 const metaData = config["html-meta-data"];
 const oEmbed = "oembed.json";
 

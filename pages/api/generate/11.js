@@ -1,6 +1,7 @@
-import generator from "../../../js/generators";
-import requestBlock from "../../../js/request";
-import config from "../../../config.json";
+import { generate11Key } from "/js/generators";
+import requestBlock from "/js/request";
+
+import config from "../../../config.json" with { type: "json" };
 const amountLimit = config.limits.keys["11"];
 
 export default async (req, res) => {
@@ -16,7 +17,7 @@ export default async (req, res) => {
     }
 
     const generatedKey = {
-        keys: generator.generate11Key(amount),
+        keys: generate11Key(amount),
         amount: amount,
     };
     res.status(200).json(generatedKey);

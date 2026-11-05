@@ -2,7 +2,7 @@ global.erroroem = [];
 global.error10 = [];
 global.error11 = [];
 
-module.exports = {
+export default {
     CHECK_FIRST_10,
     CHECK_SECOND_10,
     CHECK_FIRST_11,

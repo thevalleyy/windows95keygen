@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 
-const config = require("../config.json");
+import config from "../config.json" with { type: "json" }
 const punArr = config["pun-arr"];
 const metaData = config["html-meta-data"];
 const oEmbed = "oembed.json";

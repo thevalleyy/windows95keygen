@@ -4,19 +4,13 @@ export default (req, res) => {
 
 import checkers from "./checkers";
 
-function generateNumber(digitsNumber) {
+export function generateNumber(digitsNumber) {
     const maxNumber = parseInt("9".repeat(digitsNumber)) + 1;
     const generatedNumber = Math.floor(Math.random() * maxNumber);
     return String(generatedNumber).padStart(digitsNumber, "0");
 }
 
-module.exports = {
-    generate10Key,
-    generate11Key,
-    generateOemKey,
-};
-
-function generate10Key(amount = 1) {
+export function generate10Key(amount = 1) {
     const keys = [];
     for (let i = 0; i < amount; i++) {
         keys.push(`${FIRST_10()}-${SECOND_10()}`);
@@ -44,7 +38,7 @@ function generate10Key(amount = 1) {
     }
 }
 
-function generate11Key(amount = 1) {
+export function generate11Key(amount = 1) {
     const keys = [];
     for (let i = 0; i < amount; i++) {
         keys.push(`${FIRST_11()}-${SECOND_11()}`);
@@ -78,7 +72,7 @@ function generate11Key(amount = 1) {
     }
 }
 
-function generateOemKey(amount = 1) {
+export function generateOemKey(amount = 1) {
     const keys = [];
     for (let i = 0; i < amount; i++) {
         keys.push(`${DATE_OEM()}-OEM-${SECOND_SEGMENT_OEM()}-${LAST_SEGMENT_OEM()}`);

@@ -1,7 +1,8 @@
-import generator from "../../../js/generators";
-import requestBlock from "../../../js/request";
-import config from "../../../config.json";
-const amountLimit = config.limits.keys["oem"];
+import { generateOemKey } from "/js/generators";
+import requestBlock from "/js/request";
+
+import config from "../../../config.json" with { type: "json" };
+const amountLimit = config.limits.keys["10"];
 
 export default async (req, res) => {
     if (await requestBlock(req, res)) return;
@@ -16,7 +17,7 @@ export default async (req, res) => {
     }
 
     const generatedKey = {
-        keys: generator.generateOemKey(amount),
+        keys: generateOemKey(amount),
         amount: amount,
     };
     res.status(200).json(generatedKey);

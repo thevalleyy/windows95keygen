@@ -1,11 +1,11 @@
-const config = require("./config.json");
+import config from "./config.json" with { type: "json" };
 
 /** @type {import('next-sitemap').IConfig} */
-
-module.exports = {
+const sitemapConfig = {
     siteUrl: config.url,
     generateRobotsTxt: false, // (optional)
     sitemapSize: 7000,
     generateIndexSitemap: false,
-    // ...other options
 };
+
+export default sitemapConfig;

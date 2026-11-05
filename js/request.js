@@ -1,6 +1,7 @@
-const { RateLimiterMemory } = require("rate-limiter-flexible");
-const config = require("../config.json");
-const fs = require("node:fs");
+import { RateLimiterMemory } from "rate-limiter-flexible";
+import fs from "node:fs";
+
+import config from "../config.json" with { type: "json" };
 const blocklist = config["blocked-ips"];
 const localIpv4Regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/; // local ip regex
 
@@ -64,7 +65,7 @@ async function writeLog(type, reason, ip, url, time) {
     });
 }
 
-async function requestBlock(req, res) {
+export default async function requestBlock(req, res) {
     const time = Date.now(); // request time
     const ipAddress = req.headers["cf-connecting-ip"] || req.headers["x-forwarded-for"] || req.connection.remoteAddress; // clients ip address
     const result = await blocked(req, res, ipAddress);
@@ -78,4 +79,4 @@ async function requestBlock(req, res) {
     }
 }
 
-module.exports = requestBlock;
+
